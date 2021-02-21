@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import LoggedInRedirect from './components/Routes/LoggedInRedirect';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import Navbar from './components/Navbar/Navbar';
+import Login from './pages/Login/Login';
+import Orders from './pages/Orders/Orders';
+import Order from './pages/Order';
+import Products from './pages/Products/Products';
+import Product from './pages/Product';
+import Users from './pages/Users/Users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => 
+(
+  <Router>
+    <Navbar />
+    <Switch>
+      <LoggedInRedirect path="/" exact Component={Login} />
+      <PrivateRoute exact path="/orders" Component={Orders} />
+      <PrivateRoute exact path="/order/:orderId" Component={Order} />
+      <PrivateRoute exact path="/products" Component={Products} />
+      <PrivateRoute exact path="/product/:productId" Component={Product} />
+      <PrivateRoute exact path="/users" Component={Users} />
+    </Switch> 
+  </Router>
+);
 
 export default App;
