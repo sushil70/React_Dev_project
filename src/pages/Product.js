@@ -24,8 +24,7 @@ function Product(props) {
     }
     useEffect(() => {
         _getProductDetails()
-    }, [])
-
+    })
     const loadDisplay = loading ? (
         <h1 style={{display: "grid", placeItems: "center", height: "500px"}}>
             Loading...

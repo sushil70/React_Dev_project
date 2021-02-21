@@ -23,7 +23,7 @@ function Order(props) {
     }
     useEffect(() => {
         _getOrderDetails()
-    }, [])
+    })
 
     const loadDisplay = loading ? (
         <h1 style={{display: "grid", placeItems: "center", height: "500px"}}>
